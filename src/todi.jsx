@@ -81,13 +81,13 @@ export default function TodoApp() {
 
         {/* List */}
         <ul className="space-y-2">
-          {todos.map((todo, index) => (
+          {todos.map((todo) => (
             <li
-              key={index}
+              key={todo._id}
               className="flex items-center justify-between bg-gray-50 p-3 rounded-lg hover:shadow-md transition"
             >
               <span
-                onClick={() => toggleTodo(index)}
+                onClick={() => toggleTodo(todo._id)}
                 className={`flex-1 cursor-pointer ${
                   todo.done
                     ? "line-through text-gray-400"
@@ -98,7 +98,7 @@ export default function TodoApp() {
               </span>
 
               <button
-                onClick={() => deleteTodo(index)}
+                onClick={() => deleteTodo(todo._id)}
                 className="text-red-500 hover:text-red-700"
               >
                 ✕
