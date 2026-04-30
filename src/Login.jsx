@@ -62,6 +62,13 @@ export default function Login() {
           Sign In
         </button>
 
+        <button
+          onClick={() => navigate("/register")}
+          className="w-full mt-3 border border-indigo-500 text-indigo-600 py-2 rounded-lg hover:bg-indigo-50 transition"
+        >
+          Create an account
+        </button>
+
         <p className="text-sm text-gray-400 text-center mt-4">
           Use any email & password
         </p>
