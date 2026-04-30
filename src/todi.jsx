@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { apiUrl } from "./api";
 
 
 
@@ -10,7 +11,7 @@ export default function TodoApp() {
   const fetchTodos = async () => {
     const email = localStorage.getItem("email");
 
-    const res = await fetch(`http://localhost:3000/todos/${email}`);
+    const res = await fetch(apiUrl(`/todos/${email}`));
     const data = await res.json();
 
     setTodos(data);
@@ -24,7 +25,7 @@ export default function TodoApp() {
 
   const email = localStorage.getItem("email");
 
-  const res = await fetch("http://localhost:3000/todos", {
+  const res = await fetch(apiUrl("/todos"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,7 +40,7 @@ export default function TodoApp() {
 };
 
  const toggleTodo = async (id) => {
-  const res = await fetch(`http://localhost:3000/todos/${id}`, {
+  const res = await fetch(apiUrl(`/todos/${id}`), {
     method: "PUT",
   });
 
@@ -48,7 +49,7 @@ export default function TodoApp() {
   setTodos(todos.map(t => t._id === id ? updated : t));
 };
   const deleteTodo = async (id) => {
-  await fetch(`http://localhost:3000/todos/${id}`, {
+  await fetch(apiUrl(`/todos/${id}`), {
     method: "DELETE",
   });
 
